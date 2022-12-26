@@ -126,5 +126,93 @@ let capitalizedSentence = sentence.split(" ").map(wrod => word[0].toUpperCase() 
 let capitalizedSentence = sentence.split(" ").reduce((prev, curr) => `${prev} ${curr[0].toUpperCase() + curr.slice(1)}`, '')
 ```
 
+8. Get the most repeated character in a string 
+```
+let str = "I am a javascript developer"
+let normalizeStr = (str) => str.replace(/[^\w]/g, '').toLowerCase()
+const getMostRepeatedChar = (str) => {
+  const charMap = {}
+  let max = 0
+  let maxChar = ""
 
+  for (let char of normalizeStr(str)) {
+    if (charMap[char]) {
+      charMap[char]++
+    } else {
+      charMap[char] = 1
+    }
+  }
 
+  for (let char in charMap) {
+    if (charMap[char] > max) {
+      max = charMap[char]
+      maxChar = char
+    }
+  }
+
+  return maxChar
+}
+
+console.log(getMostRepeatedChar(str))
+
+```
+
+9. Check balanced parentheses using JS
+```
+const isBalancedParentheses = (str) => {
+    let count = 0;
+    for (let char of str)
+    {
+        if (char === '(') { count++; }
+        else if (char === ')')
+        {
+            if (count === 0) { return false; }
+            count--;
+        }
+    }
+    return count === 0;
+}
+
+console.log(isBalancedParentheses("(this is testing)")) // true
+console.log(isBalancedParentheses("(this is testing")) // false
+```
+
+10. Differences between null and undefined
+```
+// a is declared but it does not have any value. Therefore, it is undefined. 
+let a; 
+console.log(a) // undefined
+
+// Here a has a value which a null (null a special value === no value)
+a = null; 
+console.log(a) // null 
+
+// Here a got a value of 5 (real value)
+a = 5; 
+console.log(a) // 5
+```
+
+11. Whats && operator in JS? 
+The && or Logical AND operator finds the first falsy expression in its operands and returns it and if it does not find any falsy expression it returns the last expression. 
+```
+console.log(false && 1 && []); // false
+console.log(" " && true && 5); // 5
+
+// we can use && or AND operator in conditinal 
+let test = false; 
+if(test) {
+    console.log("it will not be logged")
+}
+
+test && "it will not be logged again."
+
+test = true; 
+test && "it will not be logged here."
+
+```
+
+12.  What does the || operator do?
+The || or Logical OR operator finds the first truthy expression in its operands and returns it.
+
+console.log(null || 1 || undefined); // 1
+console.log(name || "Mark") // Mark 
